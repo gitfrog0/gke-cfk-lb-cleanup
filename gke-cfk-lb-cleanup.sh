@@ -1,6 +1,6 @@
 #!/bin/bash
 
-delete_gce_lb_objects() {
+delete_gke_cfk_lb_objects() {
     local id="$1"
     local healthcheckname=""
 
@@ -35,7 +35,7 @@ delete_gce_lb_objects() {
 for target in $(gcloud compute --project="${PROJECT}" target-pools list --format='json' --filter="region:( ${REGION} )" --filter="instances:( gke-${GKE_CLUSTER_NAME} )" | jq -r '.[] ' | jq -r '.name') ; do
     # collect the target pools that don't have healthy instances
     if ! $(gcloud compute --project="${PROJECT}" target-pools get-health "${target}" --region="${REGION}" 2>/dev/null >/dev/null); then
-        delete_gce_lb_objects "$target"
+        delete_gke_cfk_lb_objects "$target"
         break
     fi
 done

@@ -1,4 +1,4 @@
-GKE CFK Load balancer cleanup scripts
+GKE CFK Load balancer cleanup script
 ===================
 
 This script will remove all load balancers created by Confluent for Kubernetes for a GKE cluster.
@@ -31,7 +31,7 @@ Configuration is handled through environment variables:
 Set the env variables and execute the script
 ```
 PROJECT=myproject \
-REGION=us-central1 \
+REGION=europe-west2 \
 GKE_CLUSTER_NAME=cfk-mycluster \
 ./gke-cfk-lb-cleanup.sh
 ```
