@@ -31,11 +31,15 @@ delete_gke_cfk_lb_objects() {
     fi
 }
 
+i=1
 # lookup all target pools for provided cluster
 for target in $(gcloud compute --project="${PROJECT}" target-pools list --format='json' --filter="region:( ${REGION} )" --filter="instances:( gke-${GKE_CLUSTER_NAME} )" | jq -r '.[] ' | jq -r '.name') ; do
     # collect the target pools that don't have healthy instances
     if ! $(gcloud compute --project="${PROJECT}" target-pools get-health "${target}" --region="${REGION}" 2>/dev/null >/dev/null); then
         delete_gke_cfk_lb_objects "$target"
-        break
+        ((i=i+1))
+        if [ $i -gt $1 ] ; then
+            break
+        fi
     fi
 done

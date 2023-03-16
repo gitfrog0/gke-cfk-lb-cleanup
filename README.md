@@ -28,12 +28,12 @@ Configuration is handled through environment variables:
 
 ### Running the script
 
-Set the env variables and execute the script
+Set the env variables and execute the script, supplying the maximum number of load balancer to remove:
 ```
 PROJECT=myproject \
 REGION=europe-west2 \
 GKE_CLUSTER_NAME=cfk-mycluster \
-./gke-cfk-lb-cleanup.sh
+./gke-cfk-lb-cleanup.sh MAX_LBS_TO_REMOVE
 ```
 
 This script interates through gcloud target pools for the provided cluster, 
