@@ -21,14 +21,14 @@ Usage
 
 Configuration is handled through environment variables:
 
-- `PROJECT`: The GCE project that we should operate on
-- `REGION`: The region where GCE resources should be probed
-- `GKE_CLUSTER_NAME`: The Kube cluster name for verifying network resources against
+- `PROJECT`: The GCE project
+- `REGION`: The region used
+- `GKE_CLUSTER_NAME`: The Kube cluster name
 - `DRYRUN`: Run script without executing deletes
 
 ### Running the script
 
-Set the env variables and execute the script, supplying the maximum number of load balancer to remove:
+Set the env variables and execute the script, supplying the maximum number of load balancers to remove:
 ```
 PROJECT=myproject \
 REGION=europe-west2 \
